@@ -1,0 +1,25 @@
+{
+  "name": "social-network-api",
+  "version": "1.0.0",
+  "description": "Social-Network-API",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izabelacloud/Social-Network-API.git"
+  },
+  "author": "Izabela Petrovicova",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/izabelacloud/Social-Network-API/issues"
+  },
+  "homepage": "https://github.com/izabelacloud/Social-Network-API#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.27.0",
+    "mongoose": "^5.9.22"
+  }
+}
