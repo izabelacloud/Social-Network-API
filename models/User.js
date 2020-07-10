@@ -1,6 +1,11 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, Types } = require('mongoose');
 const moment = require('moment');
 
+const UserSchema = new Schema(
+    {
+
+    }
+);
 
 
 //create the Pizza model using PizzaSchema 
