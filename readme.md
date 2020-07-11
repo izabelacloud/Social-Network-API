@@ -18,9 +18,9 @@ The Social Network API application contains routes to APIs to create, get, updat
 
 ## Deployed Application 
 
-[Social Network API Backend Code Walk-through Video](TBD)<br />
-[Social Network API Testing Walk-through Video](TBD)
-
+[Social Network API Backend Code Walk-through Video](https://drive.google.com/file/d/1-ozyOWvWarDaS9fBidsnShi1I6cywScj/view)<br />
+[Social Network API Testing Walk-through Video - 1](https://drive.google.com/file/d/1cfo8k-ri2memuZJPKokQMdWf3HL1H4BV/view)<br />
+[Social Network API Testing Walk-through Video - 2](https://drive.google.com/file/d/1IcHh87qJ-jb6TkKPwQr0qGkE65egM29Q/view)<br />
 
 ## User Story 
 
