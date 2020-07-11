@@ -1,14 +1,13 @@
 const { Thought, User } = require('../models');
-const { db } = require('../models/User');
 
 const thoughtController = {
     //addThought
-    addThought({params, body}, res) {
-        console.log(body);
+    addThought({body}, res) {
+        //console.log(body);
         Thought.create(body)
                 .then(({ _id }) => {
                     return User.findOneAndUpdate(
-                        { _id: params.userId },
+                        { _id: body.userId },
                         { $push: {thoughts: _id}},
                         { new: true }
                     )
@@ -38,7 +37,7 @@ const thoughtController = {
 
     //get 1 Thought
     getThoughtById({params}, res) {
-        Thought.findOne({id: params.id})
+        Thought.findOne({_id: params.id})
                 .select('-__v')
                 .then(dbThoughtData => {
                     if(!dbThoughtData) {
@@ -52,7 +51,8 @@ const thoughtController = {
 
     //update Thought
     updateThought({params, body}, res) {
-        User.findOneAndUpdate({ _id: params.id}, body, { new: true, runValidators: true })
+        console.log(params);
+        Thought.findOneAndUpdate({ _id: params.id}, body, { new: true, runValidators: true })
         .then(dbThoughtData => {
             if (!dbThoughtData) {
                 res.status(404).json({message: 'No thought found with this id!'});
@@ -79,7 +79,7 @@ const thoughtController = {
     //add Reaction
     addReaction({params, body}, res) {
         Thought.findByIdAndUpdate(
-            { id: params.id},
+            { _id: params.id},
             { $push: {reactions: body}},
             { new: true, runValidators: true}
         )
@@ -101,7 +101,7 @@ const thoughtController = {
     //remove reaction 
     removeReaction({params, body}, res) {
         Thought.findByIdAndUpdate(
-            { id: params.id},
+            { _id: params.id},
             { $pull: {reactions: {reactionId: params.reactionId}}},
             { new: true, runValidators: true}
         )

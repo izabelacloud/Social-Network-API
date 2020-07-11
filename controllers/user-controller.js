@@ -49,7 +49,10 @@ const userController = {
 
     //update User by id
     updateUser({params, body}, res) {
-        User.findOneAndUpdate({ _id: params.id}, body, { new: true, runValidators: true })
+        User.findOneAndUpdate(
+            { _id: params.id}, 
+            body, 
+            { new: true, runValidators: true })
         .then(dbUserData => {
             if (!dbUserData) {
                 res.status(404).json({message: 'No user found with this id!'});
@@ -75,9 +78,9 @@ const userController = {
 
     //add a Friend 
     addFriend({params}, res) {
-        console.log(params);
+        // console.log(params);
         User.findByIdAndUpdate(
-            { id: params.id}, 
+            { _id: params.id}, 
             { $push: {friends: params.friendId}},
             { new: true, runValidators: true}
         )
@@ -87,6 +90,7 @@ const userController = {
             })
             .select('-__v')
             .then(dbUserData => {
+                console.log('omg')
                 if(!dbUserData) {
                     res.status(404).json({ message: 'No user found with this id!'})
                     return;
@@ -102,7 +106,7 @@ const userController = {
         removeFriend({params}, res) {
             console.log(params);
             User.findByIdAndUpdate(
-                { id: params.id}, 
+                { _id: params.id}, 
                 { $pull: {friends: params.friendId}},
                 { new: true, runValidators: true}
             )
