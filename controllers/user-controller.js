@@ -90,7 +90,8 @@ const userController = {
             })
             .select('-__v')
             .then(dbUserData => {
-                console.log('omg')
+                // console.log('db user data print')
+                console.log(dbUserData);
                 if(!dbUserData) {
                     res.status(404).json({ message: 'No user found with this id!'})
                     return;
