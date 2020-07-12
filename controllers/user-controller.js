@@ -80,7 +80,7 @@ const userController = {
     //add a Friend 
     addFriend({params}, res) {
         // console.log(params);
-        User.findByIdAndUpdate(
+        User.updateMany(
             { _id: mongoose.Types.ObjectId(params.id)}, 
             { $push: {friends: mongoose.Types.ObjectId(params.friendId)}},
             { new: true, runValidators: true}
@@ -97,7 +97,13 @@ const userController = {
                     res.status(404).json({ message: 'No user found with this id!'})
                     return;
                 }
-                res.json(dbUserData)
+                // res.json(dbUserData)
+                User.findOne({ _id: params.id })
+                    .then(user => {
+                        res.json(user);
+                    })
+
+
             })
             .catch(err => {
                 res.status(400).json(err)
