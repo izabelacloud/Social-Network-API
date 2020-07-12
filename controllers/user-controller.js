@@ -1,4 +1,5 @@
 const { User } = require('../models');
+const mongoose = require('mongoose');
 
 const userController = {
     //get all users 
@@ -80,8 +81,8 @@ const userController = {
     addFriend({params}, res) {
         // console.log(params);
         User.findByIdAndUpdate(
-            { _id: params.id}, 
-            { $push: {friends: params.friendId}},
+            { _id: mongoose.Types.ObjectId(params.id)}, 
+            { $push: {friends: mongoose.Types.ObjectId(params.friendId)}},
             { new: true, runValidators: true}
         )
             .populate({
